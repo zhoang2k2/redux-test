@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import { addItem, deleteItem } from "../redux/function"
 import Table from "./Table"
 import "./index.css"
+import { bindActionCreators } from "redux"
 
 function Index(props: any) {
   const [toDo, setToDo] = useState("")
@@ -12,10 +13,13 @@ function Index(props: any) {
     setToDo(e.target.value)
   }
   const handleClick = () => {
+    console.log("props.addItem", props.addItem)
+
     props.addItem({ id: Math.floor(Math.random() * 1000), content: toDo })
     console.log(toDo)
     setToDo("")
   }
+  console.log("todoItem", props.todoItem)
 
   return (
     <div className="container">
@@ -34,4 +38,14 @@ const mapStateToProps = (state: any) => ({
   todoItem: state.todoItem,
 })
 
-export default connect(mapStateToProps, { addItem, deleteItem })(Index)
+const mapDispatchToProps = (dispatch: any) => {
+  return bindActionCreators(
+    {
+      addItem,
+      deleteItem,
+    },
+    dispatch,
+  )
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index)

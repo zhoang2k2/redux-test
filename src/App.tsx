@@ -1,7 +1,7 @@
 import { Provider } from "react-redux"
 import "./App.css"
 import Index from "./components/Index"
-import { store } from "./app/store"
+import { store } from "./redux/store"
 
 const App = () => {
   return (

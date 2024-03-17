@@ -5,6 +5,8 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, action: any) => {
+  console.log("action", action)
+
   switch (action.type) {
     case Action.ADD:
       return {

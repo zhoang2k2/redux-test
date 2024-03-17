@@ -6,7 +6,7 @@ function Table({ todoItem }: TableProps) {
   return (
     <ul>
       {todoItem &&
-        todoItem.map((item: any) => {
+        todoItem?.map((item: any) => {
           return <li key={item.id}>{item.content}</li>
         })}
     </ul>
